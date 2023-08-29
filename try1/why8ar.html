@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>你會種出什麼花生</title>
+    <style>
+        body {
+            background-color: lightyellow;
+            text-align: center;
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .image {
+            margin-top: 50px;
+        }
+        
+        .button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page active" id="page1">
+        <img src="cover.png" class="image" alt="Cover Image">
+        <button class="button" onclick="changePage('page2')">Start</button>
+    </div>
+    
+    <div class="page" id="page2">
+        <img src="introduction.png" class="image" alt="Introduction Image">
+        <button class="button" onclick="changePage('page3')">出發！
+</button>
+    </div>
+    
+    <div class="page" id="page3" onclick="changePage('page4')">
+        <img src="seedina.png" class="image" alt="Seedina Image">
+    </div>
+    
+    <div class="page" id="page4" onclick="changePage('page5')">
+        <img src="seedinb.png" class="image" alt="Seedinb Image">
+    </div>
+
+    <div class="page" id="page5" onclick="changePage('page6')">
+        <img src="seedinc.png" class="image" alt="Seedinc Image">
+    </div>
+
+
+    <div class="page" id="page6" onclick="changePage('page7')">
+        <img src="seedind.png" class="image" alt="Seedind Image">
+    </div>
+   
+    <div class="page" id="page7">
+        <img src="Q1.png" class="image" alt="Question 1">
+        <button class="button" onclick="updateResults('A')">A</button>
+        <button class="button" onclick="updateResults('B')">B</button>
+        <button class="button" onclick="updateResults('C')">C</button>
+        <button class="button" onclick="updateResults('D')">D</button>
+    </div>
+
+    <div class="page" id="page8" onclick="changePage('page9')">
+        <img src="seedinf.png" class="image" alt="Seedinf Image">
+    </div>
+
+    <div class="page" id="page9" onclick="changePage('page10')">
+        <img src="landa.png" class="image" alt="Landa Image">
+    </div>
+
+    <div class="page" id="page10" onclick="changePage('page11')">
+        <img src="landb.png" class="image" alt="Landb Image">
+    </div>
+
+    <div class="page" id="page11" onclick="changePage('page12')">
+        <img src="landc.png" class="image" alt="Landc Image">
+    </div>
+
+    <div class="page" id="page12">
+        <img src="Q2.png" class="image" alt="Question 2">
+        <button class="button" onclick="updateResults('2A')">2A</button>
+        <button class="button" onclick="updateResults('2B')">2B</button>
+    </div>
+
+    <div class="page" id="page13" onclick="changePage('page15')">
+        <img src="lande.png" class="image" alt="Lande Image">
+    </div>
+
+    <div class="page" id="page14" onclick="changePage('page15')">
+        <img src="landf.png" class="image" alt="Landf Image">
+    </div>
+
+    <div class="page" id="page15">
+        <h1>第15页</h1>
+        <!-- 这是第15页的内容 -->
+    </div>
+    
+    <script>
+        var results = {
+            产量: 0,
+            心情: 0,
+            酒鬼花生结局: 0,
+            辣味酒鬼花生结局: 0,
+            珍珠型: 0,
+            龙生型: 0,
+            普通型: 0,
+            多粒型: 0,
+            花生油结局: 0,
+            彩蛋A: 0,
+            彩蛋B: 0
+        };
+        
+        function changePage(pageId) {
+            // 隐藏当前页
+            var currentPage = document.querySelector('.page.active');
+            currentPage.classList.remove('active');
+            
+            // 显示目标页
+            var nextPage = document.getElementById(pageId);
+            nextPage.classList.add('active');
+        }
+
+        function updateResults(answer) {
+            if (answer === 'A') {
+                results['普通型'] += 1;
+                results['酒鬼花生结局'] += 1;
+                results['辣味酒鬼花生结局'] += 1;
+            } else if (answer === 'B') {
+                results['珍珠型'] += 1;
+                results['酒鬼花生结局'] += 1;
+                results['辣味酒鬼花生结局'] += 1;
+            } else if (answer === 'C') {
+                results['产量'] += 1;
+                results['多粒型'] += 1;
+            } else if (answer === 'D') {
+                results['心情'] += 1;
+                results['龙生型'] += 1;
+            } else if (answer === '2A') {
+                results['花生油结局'] += 1;
+                results['彩蛋A'] += 1;
+                changePage('page13');
+                return;
+            } else if (answer === '2B') {
+                results['心情'] += 1;
+                results['彩蛋B'] += 1;
+                changePage('page14');
+                return;
+            }
+
+            changePage('page8');
+
+        }
+    </script>
+</body>
+</html>
+```
